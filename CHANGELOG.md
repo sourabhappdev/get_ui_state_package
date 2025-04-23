@@ -1,3 +1,12 @@
+## 0.0.4
+
+* Enforce `GlobalUiStateConfig` initialization before using `UiStateBuilder`.
+  - Added `isInitialized` flag to track initialization status.
+  - Added assertion in `UiStateBuilder` constructor to prevent misuse.
+* Improved documentation and inline comments for better developer experience.
+* Enhanced type safety and structure of `GlobalUiStateConfig` getters.
+* Added support for per-screen override widgets with fallback to global config.
+
 ## 0.0.3
 
 * Fix logo not visible in `README.md` due to incorrect image URL.
