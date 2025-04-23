@@ -1,5 +1,5 @@
 <p align="center">
-	<img src="https://raw.githubusercontent.com/sourabhappdev/get_ui_state_package/main/assets/logo.png" alt="Package Logo" height="150" />
+	<img src="assets/logo.png" alt="Package Logo" height="150" />
 </p>
 <p align="center">
 	<i>Built on top of <a href="https://pub.dev/packages/get" target="_blank">GetX</a> for effortless UI state handling</i>
@@ -123,24 +123,6 @@ final stateFromStream = UiStateModel<int>.fromStream(myStream());
 
 ---
 
-## 🧩 Folder Structure
-
-```
-lib/
-├── get_ui_state_package.dart
-├── src/
-│   ├── enums/
-│   │   └── ui_state.dart
-│   ├── models/
-│   │   └── ui_state_model.dart
-│   ├── utils/
-│   │   └── global_ui_state_config.dart
-│   └── widgets/
-│       └── ui_state_builder.dart
-```
-
----
-
 ## 📃 License
 
 Licensed under the [MIT License](https://opensource.org/licenses/MIT)
@@ -187,4 +169,3 @@ class ExampleScreen extends StatelessWidget {
 }
 </code>
 </pre>
-
