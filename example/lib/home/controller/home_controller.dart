@@ -3,7 +3,7 @@ import 'package:get_ui_state_package/get_ui_state_package.dart';
 
 class HomeController extends GetxController {
   final Rx<UiStateModel<String>> uiStateModel =
-  Rx<UiStateModel<String>>(UiStateModel.initial());
+      Rx<UiStateModel<String>>(UiStateModel.initial());
   final futureState = UiStateModel<String>.initial().obs;
   final streamState = UiStateModel<String>.initial().obs;
 
@@ -55,11 +55,11 @@ class HomeController extends GetxController {
 
     Stream<String> stream = Stream<String>.periodic(
       const Duration(seconds: 3),
-          (count) => "🔁 Stream data #$count",
+      (count) => "🔁 Stream data #$count",
     ).take(1);
 
     stream.listen(
-          (data) {
+      (data) {
         streamState.value = UiStateModel.success(data);
       },
       onError: (error) {
@@ -76,5 +76,4 @@ class HomeController extends GetxController {
   void retryFuture() {
     loadFromFuture();
   }
-
 }

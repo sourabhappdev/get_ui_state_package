@@ -29,10 +29,22 @@ class GlobalUiStateConfig {
 
   /// Ensures that global config is initialized before use.
   static void _assertInitialized() {
-    assert(_initialWidget != null, 'Initial widget must be set in GlobalUiStateConfig.initialize()');
-    assert(_loadingWidget != null, 'Loading widget must be set in GlobalUiStateConfig.initialize()');
-    assert(_emptyWidget != null, 'Empty widget must be set in GlobalUiStateConfig.initialize()');
-    assert(_errorBuilder != null, 'Error builder must be set in GlobalUiStateConfig.initialize()');
+    assert(
+      _initialWidget != null,
+      'Initial widget must be set in GlobalUiStateConfig.initialize()',
+    );
+    assert(
+      _loadingWidget != null,
+      'Loading widget must be set in GlobalUiStateConfig.initialize()',
+    );
+    assert(
+      _emptyWidget != null,
+      'Empty widget must be set in GlobalUiStateConfig.initialize()',
+    );
+    assert(
+      _errorBuilder != null,
+      'Error builder must be set in GlobalUiStateConfig.initialize()',
+    );
   }
 
   /// Global getter methods (with assertions)

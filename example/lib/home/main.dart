@@ -3,11 +3,7 @@ import 'package:get/get.dart';
 import 'package:get_ui_state_package/get_ui_state_package.dart';
 import 'package:get_ui_state_package_example/home/view/home_view.dart';
 
-
 import 'controller/home_controller.dart';
-
-
-
 
 void main() {
   GlobalUiStateConfig.initialize(

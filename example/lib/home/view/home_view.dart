@@ -2,12 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_ui_state_package/get_ui_state_package.dart';
 
-
 import '../controller/home_controller.dart';
-
-
-
-
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -68,13 +63,17 @@ class HomeView extends StatelessWidget {
                     builder: (context, data) => Center(child: Text(data)),
                     isRetry: true,
                     retryFunction: controller.retryFuture,
-                    initialOverride: const Center(child: Text("Initial Future State")),
-                    loadingOverride: const Center(child: CircularProgressIndicator()),
-                    emptyOverride: const Center(child: Text("No data from future")),
+                    initialOverride:
+                        const Center(child: Text("Initial Future State")),
+                    loadingOverride:
+                        const Center(child: CircularProgressIndicator()),
+                    emptyOverride:
+                        const Center(child: Text("No data from future")),
                     errorBuilderOverride: (context, error) => Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("❌ $error", style: const TextStyle(color: Colors.red)),
+                        Text("❌ $error",
+                            style: const TextStyle(color: Colors.red)),
                         const SizedBox(height: 8),
                         ElevatedButton(
                           onPressed: controller.retryFuture,
@@ -89,10 +88,14 @@ class HomeView extends StatelessWidget {
                   UiStateBuilder<String>(
                     uiStateModel: controller.streamState,
                     builder: (context, data) => Center(child: Text(data)),
-                    initialOverride: const Center(child: Text("Initial Stream State")),
-                    loadingOverride: const Center(child: CircularProgressIndicator()),
-                    emptyOverride: const Center(child: Text("No data from stream")),
-                    errorBuilderOverride: (context, error) => Text("⚠️ Stream Error: $error"),
+                    initialOverride:
+                        const Center(child: Text("Initial Stream State")),
+                    loadingOverride:
+                        const Center(child: CircularProgressIndicator()),
+                    emptyOverride:
+                        const Center(child: Text("No data from stream")),
+                    errorBuilderOverride: (context, error) =>
+                        Text("⚠️ Stream Error: $error"),
                   ),
                 ],
               ),
@@ -103,5 +106,3 @@ class HomeView extends StatelessWidget {
     );
   }
 }
-
-

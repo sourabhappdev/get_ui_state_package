@@ -37,7 +37,8 @@ final class UiStateBuilder<T> extends StatelessWidget {
   final Widget? emptyOverride;
 
   /// Optional error widget builder to override global error widget
-  final Widget Function(BuildContext context, String error)? errorBuilderOverride;
+  final Widget Function(BuildContext context, String error)?
+  errorBuilderOverride;
 
   /// Whether to show retry button for this screen
   final bool isRetry;
@@ -51,19 +52,16 @@ final class UiStateBuilder<T> extends StatelessWidget {
       final state = uiStateModel.value.state;
 
       return switch (state) {
-        UiState.initial =>
-        initialOverride ?? GlobalUiStateConfig.initialWidget,
+        UiState.initial => initialOverride ?? GlobalUiStateConfig.initialWidget,
 
-        UiState.loading =>
-        loadingOverride ?? GlobalUiStateConfig.loadingWidget,
+        UiState.loading => loadingOverride ?? GlobalUiStateConfig.loadingWidget,
 
-        UiState.empty =>
-        emptyOverride ?? GlobalUiStateConfig.emptyWidget,
+        UiState.empty => emptyOverride ?? GlobalUiStateConfig.emptyWidget,
 
-        UiState.success =>
-            builder(context, uiStateModel.value.data),
+        UiState.success => builder(context, uiStateModel.value.data),
 
-        UiState.error => (errorBuilderOverride ?? GlobalUiStateConfig.errorBuilder)(
+        UiState.error => (errorBuilderOverride ??
+            GlobalUiStateConfig.errorBuilder)(
           context,
           uiStateModel.value.error,
         ),

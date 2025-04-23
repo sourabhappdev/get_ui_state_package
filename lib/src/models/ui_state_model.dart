@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 
 final class UiStateModel<T> {
   UiStateModel._({required this.state, T? data, String? error})
-      : _data = data,
-        _error = error;
+    : _data = data,
+      _error = error;
 
   factory UiStateModel.initial() => UiStateModel._(state: UiState.initial);
   factory UiStateModel.loading() => UiStateModel._(state: UiState.loading);
