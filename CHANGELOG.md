@@ -1,17 +1,20 @@
-# Changelog
+s# Changelog
 
 All notable changes to this project will be documented in this file.
 
-## [0.0.1] - 2025-04-20
+## [0.0.2] - 2025-04-24
+
+### 🛠 Fixed
+- Updated `description` field in `pubspec.yaml` to meet recommended character limits for better search engine visibility.
+- Corrected formatting issues across the codebase using Dart formatter.
+- Verified and fixed unreachable URLs in `pubspec.yaml`:
+  - `homepage`
+  - `repository`
+  - `issue_tracker`
 
 ### ✨ Added
-- Initial release of `get_ui_state_package`.
-- Global UI state configuration for loading, error, empty, and initial states.
-- `UiStateBuilder` widget with customizable override options.
-- Support for both `Stream` and `Future` based data sources.
-- Retry mechanism for failed states.
-- Example usage with `GetxController` and `Obx`.
-- Easy integration with GetX state management.
+- Introduced a new professional logo to enhance branding and visual identity.
+  - Logo is placed at the top of the `README.md`.
 
 ---
 
