@@ -1,6 +1,7 @@
 <p align="center">
-	<img src="assets/logo.png" alt="Package Logo" height="150" />
+    <img src="https://raw.githubusercontent.com/sourabhappdev/get_ui_state_package/dev/assets/logo.png" alt="Package Logo" height="150" />
 </p>
+
 <p align="center">
 	<i>Built on top of <a href="https://pub.dev/packages/get" target="_blank">GetX</a> for effortless UI state handling</i>
 </p>
