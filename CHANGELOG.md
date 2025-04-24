@@ -1,3 +1,9 @@
+## 0.0.5
+
+* Fix example not displaying on pub.dev:
+  - Moved complete example app to `example/lib/main.dart` following pub.dev conventions.
+  - Ensured the example is self-contained and demonstrates package usage clearly.
+
 ## 0.0.4
 
 * Enforce `GlobalUiStateConfig` initialization before using `UiStateBuilder`.
@@ -21,4 +27,3 @@
   - `issue_tracker`
 * Add new professional logo to enhance branding.
   - Logo placed at the top of the `README.md`.
-
