@@ -2,7 +2,43 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_ui_state_package/get_ui_state_package.dart';
 
-import '../controller/home_controller.dart';
+void main() {
+  GlobalUiStateConfig.initialize(
+    initialWidget: const Center(child: Text("App initializing...")),
+    loadingWidget: const Center(child: CircularProgressIndicator()),
+    emptyWidget: const Center(child: Text("No data found")),
+    errorBuilder: (context, error) => Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(error, style: const TextStyle(color: Colors.red)),
+          const SizedBox(height: 12),
+          ElevatedButton(
+            onPressed: GlobalUiStateConfig.retryFunction,
+            child: const Text("Retry"),
+          ),
+        ],
+      ),
+    ),
+    isRetry: true,
+    retryFunction: () => Get.find<HomeController>().fetchData(),
+  );
+
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return GetMaterialApp(
+      title: 'GetX UI State Demo',
+      theme: ThemeData(primarySwatch: Colors.indigo),
+      home: const HomeView(),
+    );
+  }
+}
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -31,7 +67,6 @@ class HomeView extends StatelessWidget {
                   ],
                 ),
               ),
-              // Optional overrides
               initialOverride: const Center(child: Text("🚀 Welcome")),
               loadingOverride: const Center(child: CircularProgressIndicator()),
               emptyOverride: const Center(child: Text("📭 No data to show")),
@@ -104,5 +139,82 @@ class HomeView extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+class HomeController extends GetxController {
+  final Rx<UiStateModel<String>> uiStateModel =
+      Rx<UiStateModel<String>>(UiStateModel.initial());
+  final futureState = UiStateModel<String>.initial().obs;
+  final streamState = UiStateModel<String>.initial().obs;
+
+  Future<void> fetchData() async {
+    uiStateModel.value = UiStateModel.loading();
+
+    await Future.delayed(const Duration(seconds: 2));
+
+    final result = await simulateApiCall();
+
+    uiStateModel.value = result;
+  }
+
+  Future<UiStateModel<String>> simulateApiCall() async {
+    final random = DateTime.now().second % 4;
+
+    switch (random) {
+      case 0:
+        return UiStateModel.success("🎉 API Success: Data loaded");
+      case 1:
+        return UiStateModel.empty();
+      case 2:
+        return UiStateModel.error("Something went wrong!");
+      default:
+        return UiStateModel.success("✅ Default Success");
+    }
+  }
+
+  @override
+  void onInit() {
+    super.onInit();
+    fetchData();
+    loadFromFuture();
+    loadFromStream();
+  }
+
+  void loadFromFuture() async {
+    futureState.value = UiStateModel.loading();
+    try {
+      await Future.delayed(const Duration(seconds: 2));
+      futureState.value = UiStateModel.success("🎯 Data from Future");
+    } catch (e) {
+      futureState.value = UiStateModel.error(e.toString());
+    }
+  }
+
+  void loadFromStream() {
+    streamState.value = UiStateModel.loading();
+
+    Stream<String> stream = Stream<String>.periodic(
+      const Duration(seconds: 3),
+      (count) => "🔁 Stream data #$count",
+    ).take(1);
+
+    stream.listen(
+      (data) {
+        streamState.value = UiStateModel.success(data);
+      },
+      onError: (error) {
+        streamState.value = UiStateModel.error(error.toString());
+      },
+      onDone: () {
+        if (streamState.value.state != UiState.success) {
+          streamState.value = UiStateModel.empty();
+        }
+      },
+    );
+  }
+
+  void retryFuture() {
+    loadFromFuture();
   }
 }
