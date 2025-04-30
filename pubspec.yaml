@@ -1,7 +1,7 @@
 name: get_ui_state_package
 description: >
   A lightweight Flutter package using GetX to manage common UI states like loading, error, and success.
-version: 0.0.5
+version: 0.0.6
 homepage: https://github.com/sourabhappdev/get_ui_state_package/tree/dev
 repository: https://github.com/sourabhappdev/get_ui_state_package/tree/dev
 issue_tracker: https://github.com/sourabhappdev/get_ui_state_package/issues

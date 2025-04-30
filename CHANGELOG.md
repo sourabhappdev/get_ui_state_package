@@ -1,8 +1,7 @@
-## 0.0.5
+## 0.0.6
 
-* Fix example not displaying on pub.dev:
-  - Moved complete example app to `example/lib/main.dart` following pub.dev conventions.
-  - Ensured the example is self-contained and demonstrates package usage clearly.
+* Fix pub.dev not displaying repository and issue tracker:
+  - Updated `repository`, `homepage`, and `issue_tracker` URLs in `pubspec.yaml` to point to the correct `dev` branch.
 
 ## 0.0.4
 
